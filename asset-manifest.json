@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/fludlich-goit-react-hw-04-image-finder/static/css/main.60d33314.css",
-    "main.js": "/fludlich-goit-react-hw-04-image-finder/static/js/main.78462f82.js",
+    "main.js": "/fludlich-goit-react-hw-04-image-finder/static/js/main.90a5ceaa.js",
     "index.html": "/fludlich-goit-react-hw-04-image-finder/index.html",
     "main.60d33314.css.map": "/fludlich-goit-react-hw-04-image-finder/static/css/main.60d33314.css.map",
-    "main.78462f82.js.map": "/fludlich-goit-react-hw-04-image-finder/static/js/main.78462f82.js.map"
+    "main.90a5ceaa.js.map": "/fludlich-goit-react-hw-04-image-finder/static/js/main.90a5ceaa.js.map"
   },
   "entrypoints": [
     "static/css/main.60d33314.css",
-    "static/js/main.78462f82.js"
+    "static/js/main.90a5ceaa.js"
   ]
 }
