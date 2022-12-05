@@ -32,7 +32,7 @@ export function App() {
           setTotalHits(data.totalHits);
           const hits = data.hits;
 
-          setImages([...images, ...hits]);
+          setImages(images=>[...images, ...hits]);
           setStatus('resolved');
           if (hits.length === 0) {
             return Promise.reject(
@@ -45,7 +45,7 @@ export function App() {
           setError(error);
         });
     }
-  }, [images, page, inputValue]);
+  }, [page, inputValue]);
 
   const handleFormSubmit = input => {
     setInputValue(input);
