@@ -1,4 +1,5 @@
-import { Component } from 'react';
+
+import { useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { Form, Button, Input, Label, Searchbarr } from './Searchbar.styled';
 import { toast } from 'react-toastify';
@@ -6,51 +7,41 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
 
-export class Searchbar extends Component {
-  state = {
-    inputValue: '',
+export function Searchbar({ onSubmi }) {
+  const [input, setInput] = useState('');
+
+  const handleChangeInput = event => {
+    setInput(event.target.value);
   };
-  handleChangeInput = event => {
-    this.setState({ inputValue: event.target.value });
-  };
-  handleSend = event => {
+
+  const handleSend = event => {
     event.preventDefault();
-    if (this.state.inputValue.trim() === '') {
-      toast.error('Please, enter a valid value', {
-        position: 'top-right',
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      });
+    if (input.trim() === '') {
+      toast.error('Please, enter a valid value');
       return;
     }
-    this.props.onSubmi(this.state.inputValue);
-    this.setState({ inputValue: '' });
+    onSubmi(input);
+    setInput('');
   };
-  render() {
-    return (
-      <Searchbarr>
-        <Form onSubmit={this.handleSend}>
-          <Button type="submit">
-            <AiOutlineSearch />
-            <Label>Search</Label>
-          </Button>
-          <Input
-            type="text"
-            placeholder="Search images and photos"
-            onChange={this.handleChangeInput}
-            value={this.state.inputValue}
-          />
-          <ToastContainer></ToastContainer>
-        </Form>
-      </Searchbarr>
-    );
-  }
-}
+  return (
+    <Searchbarr>
+      <Form onSubmit={handleSend}>
+        <Button type="submit">
+          <AiOutlineSearch />
+          <Label>Search</Label>
+        </Button>
+        <Input
+          type="text"
+          placeholder="Search images and photos"
+          onChange={handleChangeInput}
+          value={input}
+        />
+        <ToastContainer></ToastContainer>
+      </Form>
+    </Searchbarr>
+  );
+} 
+
 
 Searchbar.propTypes = {
   onSubmit: PropTypes.func,
