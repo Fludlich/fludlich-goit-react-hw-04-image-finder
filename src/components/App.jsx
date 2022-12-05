@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 
-//  import { Searchbar } from './Searchbar/Searchbar';
-// import { ImageGallery } from './ImageGallery/ImageGallery';
+ import { Searchbar } from './Searchbar/Searchbar';
+import { ImageGallery } from './ImageGallery/ImageGallery';
 
-// import { fetchImages } from 'services/Api';
+import { fetchImages } from 'services/Api';
 
 export function App() {
   const [inputValue, setInputValue] = useState('');
@@ -13,61 +13,61 @@ export function App() {
   const [page, setPage] = useState(1);
   const [totalHits, setTotalHits] = useState(0);
 
-  // useEffect(() => {
-  //   if (!inputValue) {
-  //     return;
-  //   } else {
-  //     setStatus('pending');
+  useEffect(() => {
+    if (!inputValue) {
+      return;
+    } else {
+      setStatus('pending');
 
-  //     fetchImages(inputValue, page)
-  //       .then(response => {
-  //         if (response.ok) {
-  //           return response.json();
-  //         }
-  //         return Promise.reject(
-  //           new Error(`we cant find any photo by ${inputValue}`)
-  //         );
-  //       })
-  //       .then(data => {
-  //         setTotalHits(data.totalHits);
-  //         const hits = data.hits;
+      fetchImages(inputValue, page)
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          }
+          return Promise.reject(
+            new Error(`we cant find any photo by ${inputValue}`)
+          );
+        })
+        .then(data => {
+          setTotalHits(data.totalHits);
+          const hits = data.hits;
 
-  //         setImages([...images, ...hits]);
-  //         setStatus('resolved');
-  //         if (hits.length === 0) {
-  //           return Promise.reject(
-  //             new Error(`no results found ${inputValue}`)
-  //           );
-  //         }
-  //       })
-  //       .catch(error => {
-  //         setStatus('rejected');
-  //         setError(error);
-  //       });
-  //   }
-  // }, [page, inputValue]);
+          setImages([...images, ...hits]);
+          setStatus('resolved');
+          if (hits.length === 0) {
+            return Promise.reject(
+              new Error(`no results found ${inputValue}`)
+            );
+          }
+        })
+        .catch(error => {
+          setStatus('rejected');
+          setError(error);
+        });
+    }
+  }, [page, inputValue]);
 
-  // const handleFormSubmit = input => {
-  //   setInputValue(input);
-  //   setPage(1);
-  //   if(inputValue!==input){
-  //     setImages([]);
-  //   }
-  // };
+  const handleFormSubmit = input => {
+    setInputValue(input);
+    setPage(1);
+    if(inputValue!==input){
+      setImages([]);
+    }
+  };
 
-  // const loadMore = event => {
-  //   setPage(state => state + 1);
-  // };
+  const loadMore = event => {
+    setPage(state => state + 1);
+  };
   return (
     <div>
-      {/* <Searchbar onSubmi={handleFormSubmit} />
+      <Searchbar onSubmi={handleFormSubmit} />
       <ImageGallery
         images={images}
         error={error}
         status={status}
         onClick={loadMore}
         hits={totalHits}
-      /> */}
+      />
     </div>
   );
 }
