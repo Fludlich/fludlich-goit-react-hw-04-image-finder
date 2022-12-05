@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
- import { Searchbar } from './Searchbar/Searchbar';
-import { ImageGallery } from './ImageGallery/ImageGallery';
+//  import { Searchbar } from './Searchbar/Searchbar';
+// import { ImageGallery } from './ImageGallery/ImageGallery';
 
 import { fetchImages } from 'services/Api';
 
@@ -60,14 +60,14 @@ export function App() {
   };
   return (
     <div>
-      <Searchbar onSubmi={handleFormSubmit} />
+      {/* <Searchbar onSubmi={handleFormSubmit} />
       <ImageGallery
         images={images}
         error={error}
         status={status}
         onClick={loadMore}
         hits={totalHits}
-      />
+      /> */}
     </div>
   );
 }
