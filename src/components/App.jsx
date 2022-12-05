@@ -47,17 +47,17 @@ export function App() {
     }
   }, [page, inputValue]);
 
-  const handleFormSubmit = input => {
-    setInputValue(input);
-    setPage(1);
-    if(inputValue!==input){
-      setImages([]);
-    }
-  };
+  // const handleFormSubmit = input => {
+  //   setInputValue(input);
+  //   setPage(1);
+  //   if(inputValue!==input){
+  //     setImages([]);
+  //   }
+  // };
 
-  const loadMore = event => {
-    setPage(state => state + 1);
-  };
+  // const loadMore = event => {
+  //   setPage(state => state + 1);
+  // };
   return (
     <div>
       {/* <Searchbar onSubmi={handleFormSubmit} />
