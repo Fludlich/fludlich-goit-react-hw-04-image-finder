@@ -45,7 +45,7 @@ export function App() {
           setError(error);
         });
     }
-  }, [page, inputValue]);
+  }, [images, page, inputValue]);
 
   const handleFormSubmit = input => {
     setInputValue(input);
