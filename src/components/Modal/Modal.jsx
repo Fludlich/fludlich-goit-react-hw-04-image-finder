@@ -8,6 +8,9 @@ const modalRoot = document.querySelector('#modal-root');
 export function Modal({ onClose, children }) {
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
+    return ()=>{
+       window.removeEventListener('keydown', handleKeyDown);
+    }
   });
   const handleBackdrop = event => {
     if (event.target === event.currentTarget) {
@@ -16,7 +19,6 @@ export function Modal({ onClose, children }) {
   };
   const handleKeyDown = event => {
     if (event.code === 'Escape') {
-      window.removeEventListener('keydown', handleKeyDown);
       onClose();
     }
   };
